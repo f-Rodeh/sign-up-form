@@ -1,24 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <header>
+  <header class="dark-theme">
     <img src="./img/Spotify_Logo_RGB_White.png" alt="Spotify" class="header-logo">
     <div class="header-credit">
-      Photo by 
+      Photo by
       <a href="https://unsplash.com/@shutters_guild?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
         Travis Yewell
-      </a> on 
-      <a href="https://unsplash.com/images/things/music?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+      </a> on
+      <a
+        href="https://unsplash.com/images/things/music?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
         Unsplash
       </a>
     </div>
   </header>
-  <main></main>
+  <main class="light-theme">
+    <p>This is not a real online service! You know you need something like this on your life, dont you? Because you're
+      awesome.</p>
+    <p><em>Get started now!</em></p>
+    <form action="" method="get">
+      <h3 class="title">Sign Up</h3>
+      <div class="input-container">
+        <div class="form-column">
+          <div>
+            <label for="first">First Name</label>
+            <input required type="text" id="first" autocomplete="given-name">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input required type="email" id="email" autocomplete="email" placeholder="me@example.com">
+          </div>
+          <div>
+            <label for="pwd">Password</label>
+            <input required type="password" id="pwd" autocomplete="new-password">
+          </div>
+        </div>
+        <div class="form-column">
+          <div>
+            <label for="last">Last Name</label>
+            <input type="text" id="last" autocomplete="family-name">
+          </div>
+          <div>
+            <label for="tel">Phone Number</label>
+            <input type="tel" id="tel" autocomplete="tel">
+          </div>
+          <div>
+            <label for="confirm-pwd">Confirm Password</label>
+            <input required type="password" id="confirm-pwd" autocomplete="new-password">
+          </div>
+        </div>
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+    <div class="login-hint">
+      Already have an account? <a href="">Sign in!</a>
+    </div>
+  </main>
 </body>
+
 </html>

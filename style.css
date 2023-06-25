@@ -1,16 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+
 :root {
+  --bg-color: hsl(0, 0%, 10%);
+  --txt-color: hsl(240, 67%, 96%);
   --accent-color: #1ED760;
+  --dark-accent-color: #00AD3D;
+
+  --input-color-invalid: hsl(0, 100%, 50%);
+  --input-color-valid: hsl(120, 100%, 25%);
+  --input-color-neutral: hsl(0, 0%, 50%);
+  --input-color-bg: hsl(240, 30%, 92%);
+  --input-color-placeholder: hsl(0, 0%, 40%);
+
+  --element-v-gap: 6vh;
+  --button-radius: 8px;
+  --low-contrast-txt: hsl(0, 0%, 60%); 
 }
 
 body, html {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   height: 100vh;
   display: flex;
+  background-color: var(--bg-color, black);
+  color: var(--txt-color, white);
 }
 
 header {
@@ -19,7 +41,7 @@ header {
   background-repeat: no-repeat;
   min-width: 350px;
   max-width: 100vh;
-  flex: 2 0 0;
+  width: 40vw;
 
   display: flex;
   flex-direction: column;
@@ -40,13 +62,77 @@ header > * {
 .header-credit {
   color: lavender;
   margin-top: auto;
-  font-size: clamp(0.8rem, 4vh,1rem);
+  font-size: clamp(0.7rem, 3vh, 0.9rem);
 }
 
-header a {
+.login-hint{
+  font-size: 0.9rem;
+  color: var(--low-contrast-txt);
+}
+
+.dark-theme a {
   color: var(--accent-color);
 }
 
+.light-theme a {
+  color: var(--dark-accent-color);
+}
+
 main {
-  flex: 3 0 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60vw;
+  padding: 24px 112px 24px 56px;
+}
+
+main p {
+  font-size: 1.3rem;
+  margin: 12px 0;
+}
+
+form .title {
+  color: white;
+  margin-top: var(--element-v-gap);
+  margin-bottom: 24px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.input-container {
+  display: flex;
+  gap: 48px
+}
+
+.form-column > div {
+  margin-bottom: 12px;
+}
+
+form button[type='submit'] {
+  margin-top: var(--element-v-gap);
+  margin-bottom: 12px;
+  padding: 12px 24px;
+  border-radius: var(--button-radius);
+  font-weight: bold;
+  border: 1.5px solid black;
+  background-color: var(--accent-color);
+}
+
+input {
+  padding: 6px 12px;
+  border: 1px solid var(--input-color-neutral);
+  background-color: var(--input-color-bg);
+}
+
+::placeholder{
+  color: var(--input-color-placeholder);
+}
+
+/* form validation */
+input.show-valid {
+  border-color: var(--input-color-invalid);
 }
