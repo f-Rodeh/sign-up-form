@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
 
 :root {
@@ -8,14 +8,16 @@
   --dark-accent-color: #00AD3D;
 
   --input-color-invalid: hsl(0, 100%, 50%);
-  --input-color-valid: hsl(120, 100%, 25%);
+  --input-color-valid: #1ED760;
   --input-color-neutral: hsl(0, 0%, 50%);
   --input-color-bg: hsl(240, 30%, 92%);
   --input-color-placeholder: hsl(0, 0%, 40%);
 
   --element-v-gap: 6vh;
   --button-radius: 8px;
-  --low-contrast-txt: hsl(0, 0%, 60%); 
+  --low-contrast-txt: hsl(0, 0%, 58%); 
+
+  --confirm-pwd-error-opacity: 1; /* controlled via js */
 }
 
 body, html {
@@ -88,13 +90,15 @@ main {
 }
 
 main p {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin: 12px 0;
+  min-width: 460px;
 }
 
 form .title {
   color: white;
-  margin-top: var(--element-v-gap);
+  font-size: 1.4rem;
+  margin-top: 4vh;
   margin-bottom: 24px;
 }
 
@@ -110,6 +114,7 @@ form label {
 
 .form-column > div {
   margin-bottom: 12px;
+  position: relative;
 }
 
 form button[type='submit'] {
@@ -118,6 +123,7 @@ form button[type='submit'] {
   padding: 12px 24px;
   border-radius: var(--button-radius);
   font-weight: bold;
+  font-size: 1.05rem;
   border: 1.5px solid black;
   background-color: var(--accent-color);
 }
@@ -126,6 +132,7 @@ input {
   padding: 6px 12px;
   border: 1px solid var(--input-color-neutral);
   background-color: var(--input-color-bg);
+  position: relative;
 }
 
 ::placeholder{
@@ -133,6 +140,56 @@ input {
 }
 
 /* form validation */
-input.show-valid {
+input.validate:invalid {
   border-color: var(--input-color-invalid);
+  outline-color: var(--input-color-invalid);
+}
+
+input.validate:valid {
+  border-color: var(--input-color-valid);
+  outline-color: var(--input-color-valid);
+}
+
+input:optional + span::after {
+  content: '(optional)';
+  font-style: italic;
+  font-size: 0.9em;
+  color: var(--low-contrast-txt);
+}
+
+input.validate:invalid + span::after{
+  content: '✘';
+  color: var(--input-color-invalid);
+}
+
+input.validate:valid + span::after{
+  content: '✔';
+  color: var(--input-color-valid);
+}
+
+input + span::after{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+input[type='password'] + span::before {
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+
+  color: var(--low-contrast-txt);
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+#pwd + span::before {
+  content: 'Minimum 6 characters';
+
+}
+
+#confirm-pwd.validate:invalid + span::before {
+  content: 'Password does not match';
+  color: var(--input-color-invalid);
+  opacity: var(--confirm-pwd-error-opacity);
 }
